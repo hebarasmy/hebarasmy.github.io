@@ -5,5 +5,5 @@ description: >
 github_username: hebarasmy
 linkedin_username: heba-rasmy
 
-theme: minima
+theme: jekyll-theme-cayman
 markdown: kramdown
