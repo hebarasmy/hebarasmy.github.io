@@ -4,19 +4,19 @@ title: Experience
 permalink: /experience/
 ---
 
-## 🧠 Professional Experience
-- IBM | GenAI + Agile Intern
-- Connect Ads | Digital Marketing
+## 💼 Professional Experience
+- IBM | Intern | GenAI + Agile
+- Connect Ads | Digital Marketing Intern
 - Klik | Startup Ambassador
 
 ## 🎓 Education
 - BSc Computer Science & AI – University of Birmingham
 
-## 🌟 Extra-Curriculars
-- ACM Vice Chair of External Comms
-- Helped 15+ students with UoB admissions
+## 🪐 Extra-Curriculars
+- ACM Vice Chair, UoB
+- Helped 15+ students with admissions & careers
 
-## 📜 Certifications
-- IBM GenAI & Design Thinking
+## 🧾 Certifications
+- IBM Design Thinking + GenAI
 - NVIDIA Deep Learning
-- The Birmingham Award
+- Birmingham Award

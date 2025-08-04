@@ -4,11 +4,11 @@ title: About Me
 permalink: /about/
 ---
 
-## 👩‍💻 About Me
+## 👾 About Me
 
 I'm Heba Rasmy, a Computer Science and AI graduate from the University of Birmingham.
 
 I'm passionate about:
-- LLMs and Retrieval-Augmented Generation
-- NLP applications for real-world learning
-- Building end-to-end intelligent platforms
+- Large Language Models & Retrieval-Augmented Generation
+- NLP-powered applications for education
+- Full-stack intelligent platform development

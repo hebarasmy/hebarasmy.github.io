@@ -4,6 +4,6 @@ title: Heba Rasmy
 permalink: /
 ---
 
-# 👋 Hi, I'm Heba Rasmy
+# 🤖 Hi, I'm Heba Rasmy
 
-Welcome to my portfolio website. Use the links above to explore my work, experiences, and get in touch!
+Welcome to my futuristic portfolio! Explore the sections above to learn about my work in AI, development, and innovation.

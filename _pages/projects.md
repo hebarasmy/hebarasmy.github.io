@@ -5,11 +5,11 @@ permalink: /projects/
 ---
 
 ## 💻 Coding Projects
-- **FinBot** – [GitHub](https://github.com/hebarasmy/finbot): A financial insights chatbot using RAG and LLMs.
-- **BrumBot** – [GitHub](https://github.com/hebarasmy/brumbot): A university student assistant chatbot.
+- **FinBot** – [GitHub](https://github.com/hebarasmy/finbot): Financial chatbot using RAG and LLMs.
+- **BrumBot** – [GitHub](https://github.com/hebarasmy/brumbot): UoB assistant chatbot for students.
 
-## 🔧 Hardware Projects
-(Coming soon...)
+## 🧠 Hardware Projects
+- (Coming Soon)
 
 ## 🎨 Design Projects
-(Coming soon...)
+- (Coming Soon)
