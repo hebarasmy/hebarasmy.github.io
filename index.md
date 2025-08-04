@@ -1,0 +1,35 @@
+---
+layout: default
+title: Heba Rasmy
+---
+
+## About Me
+
+I’m Heba Rasmy, a Computer Science and Artificial Intelligence graduate from the University of Birmingham. I specialize in intelligent systems that combine NLP, machine learning, and full-stack engineering.
+
+I’m passionate about:
+- Retrieval-Augmented Generation (RAG) & Large Language Models  
+- AI-driven education tools  
+- End-to-end platform development with Python, FastAPI, React, and MongoDB  
+
+I enjoy turning complex ideas into impactful, user-friendly tools — whether it’s building smarter chatbots or creating personalized learning experiences.
+
+---
+
+## Projects
+
+### 🔎 FinBot
+A Retrieval-Augmented Generation chatbot that delivers personalized financial insights from documents and real-time news.  
+Built with FastAPI, MongoDB, LLMs, and a full React frontend.  
+[GitHub ↗](https://github.com/hebarasmy/finbot)
+
+### 💬 BrumBot
+A university assistant chatbot designed for student productivity — combining calendar features, event discovery, and external academic resources.  
+[GitHub ↗](https://github.com/hebarasmy/brumbot)
+
+---
+
+## Contact
+
+- 📎 [LinkedIn](https://www.linkedin.com/in/heba-rasmy/)
+- 📧 Email: your-email@example.com
