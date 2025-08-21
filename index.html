@@ -1,31 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Heba Rasmy | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Heba Rasmy — Portfolio</title>
+  <meta name="description" content="AI & software projects by Heba Rasmy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --rail: #3b82f6; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .section { min-height: 100vh; scroll-margin-top: 24px; }
+    .active-dot { background: var(--rail) !important; transform: scale(1.15); }
+    .glass { backdrop-filter: blur(8px); background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12) }
+    .card { border:1px solid rgba(255,255,255,.1) }
+  </style>
 </head>
-<body>
-  <header class="navbar">
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<body class="bg-black text-white">
+  <!-- Side rail -->
+  <nav class="fixed left-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-6 z-40">
+    <a href="#home" class="w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition" data-dot="home"></a>
+    <a href="#projects" class="w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition" data-dot="projects"></a>
+    <a href="#experience" class="w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition" data-dot="experience"></a>
+    <a href="#map" class="w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition" data-dot="map"></a>
+    <a href="#contact" class="w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition" data-dot="contact"></a>
+  </nav>
 
-  <section class="hero">
-    <div class="hero-text">
-      <img src="images/robot.png" class="floating" alt="Floating Robot" width="100"/>
-      <h1>Hi, I'm <span class="highlight">Heba Rasmy</span></h1>
-      <p>Building AI-powered tools with purpose and design.</p>
-      <a href="projects.html" class="circular-button">Explore</a>
+  <!-- Accent blobs -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl animate-pulse"></div>
+    <div class="absolute -bottom-24 -right-24 w-[28rem] h-[28rem] rounded-full bg-fuchsia-500/20 blur-3xl animate-pulse"></div>
+  </div>
+
+  <!-- 01 Home -->
+  <section id="home" class="section flex items-center">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 items-center gap-10">
+      <div>
+        <p class="text-sm tracking-widest text-white/60 mb-4">01 — Home</p>
+        <h1 class="text-5xl md:text-7xl font-black leading-[1.05]">
+          Hi, I’m <span class="text-blue-400">Heba Rasmy</span>.
+        </h1>
+        <p class="mt-6 text-lg text-white/80">
+          Building AI-powered tools with purpose and design — currently showcasing HaloRide, FinBot, a Hieroglyphics Converter, and Transport Security software.
+        </p>
+        <div class="mt-7 flex gap-3">
+          <a href="#projects" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition font-semibold">View Projects</a>
+          <a href="mailto:hebarasmy@gmail.com" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40">Contact</a>
+        </div>
+      </div>
+      <div class="glass rounded-3xl p-6">
+        <!-- Replace with your 3D/portrait image -->
+        <img alt="Heba avatar" src="https://avatars.githubusercontent.com/u/00000000?v=4" class="w-full rounded-2xl object-cover aspect-[4/3]" />
+        <div class="mt-4 text-sm text-white/70">Available for AI/Frontend roles · Vancouver, BC</div>
+      </div>
     </div>
   </section>
+
+  <!-- 02 Projects -->
+  <section id="projects" class="section">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-sm tracking-widest text-white/60 mb-3">02 — Projects</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold">Featured Work</h2>
+
+      <!-- Project carousel -->
+      <div class="mt-8 relative">
+        <div id="track" class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-3">
+          <!-- HaloRide -->
+          <article class="min-w-[320px] md:min-w-[420px] snap-start card rounded-2xl p-5 bg-white/5">
+            <div class="aspect-video rounded-xl overflow-hidden bg-white/5 mb-4">
+              <!-- Optional: screenshot thumbnail -->
+              <img src="https://hebarasmy.github.io/HaloRide-mobile-app/og.png" onerror="this.style.display='none'" class="w-full h-full object-cover" />
+            </div>
+            <h3 class="text-2xl font-bold">HaloRide — AR Smart Helmet</h3>
+            <p class="mt-2 text-white/80">AR HUD, hazard detection, cooling, and hands-free control via a companion app.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-white/10">React</span>
+              <span class="px-2 py-1 rounded bg-white/10">Tailwind</span>
+              <span class="px-2 py-1 rounded bg-white/10">GitHub Pages</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a href="https://hebarasmy.github.io/HaloRide-mobile-app/" class="underline">Live</a>
+              <a href="https://github.com/hebarasmy/HaloRide-mobile-app" class="underline">Code</a>
+            </div>
+          </article>
+
+          <!-- FinBot -->
+          <article class="min-w-[320px] md:min-w-[420px] snap-start card rounded-2xl p-5 bg-white/5">
+            <div class="aspect-video rounded-xl overflow-hidden bg-white/5 mb-4"></div>
+            <h3 class="text-2xl font-bold">FinBot — Financial Insights (RAG)</h3>
+            <p class="mt-2 text-white/80">Personalized, region-aware insights with multi-LLM RAG and a modern web UI.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-white/10">React</span>
+              <span class="px-2 py-1 rounded bg-white/10">Flask/FastAPI</span>
+              <span class="px-2 py-1 rounded bg-white/10">MongoDB</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a href="https://github.com/hebarasmy/FinBot" class="underline">Code</a>
+            </div>
+          </article>
+
+          <!-- Hieroglyphics Converter -->
+          <article class="min-w-[320px] md:min-w-[420px] snap-start card rounded-2xl p-5 bg-white/5">
+            <div class="aspect-video rounded-xl overflow-hidden bg-white/5 mb-4"></div>
+            <h3 class="text-2xl font-bold">Hieroglyphics Converter</h3>
+            <p class="mt-2 text-white/80">Converts names to Ancient Egyptian hieroglyphs with media library & gallery.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-white/10">TypeScript</span>
+              <span class="px-2 py-1 rounded bg-white/10">Next.js</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a href="https://github.com/hebarasmy/hieroglyphics-converter" class="underline">Code</a>
+            </div>
+          </article>
+
+          <!-- Transport Security -->
+          <article class="min-w-[320px] md:min-w-[420px] snap-start card rounded-2xl p-5 bg-white/5">
+            <div class="aspect-video rounded-xl overflow-hidden bg-white/5 mb-4"></div>
+            <h3 class="text-2xl font-bold">Transport Security</h3>
+            <p class="mt-2 text-white/80">Anomaly detection & safety tooling for transportation systems.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-white/10">TypeScript</span>
+              <span class="px-2 py-1 rounded bg-white/10">ML</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a href="https://github.com/hebarasmy/team67dub-main" class="underline">Code</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Experience -->
+  <section id="experience" class="section flex items-center">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-sm tracking-widest text-white/60 mb-3">03 — Experience</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold">Experience & Education</h2>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-xl font-bold">Roles</h3>
+          <ul class="mt-3 space-y-2 text-white/85">
+            <li>ACM — Vice Chair of External Communications</li>
+            <li>IBM, KLIK, Connect Ads — Internships (AI, Consulting, Marketing)</li>
+            <li>Projects: FinBot, HaloRide, Hieroglyphics Converter</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-xl font-bold">Education</h3>
+          <ul class="mt-3 space-y-2 text-white/85">
+            <li>University of Birmingham — BSc Computer Science & AI</li>
+            <li>Certs: NVIDIA DL Fundamentals, IBM Practitioner</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Visitor Map -->
+  <section id="map" class="section">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-sm tracking-widest text-white/60 mb-3">04 — Visitor Map</p>
+      <div class="glass rounded-3xl p-4">
+        <!-- Replace with your clustrmaps embed -->
+        <iframe title="Visitor map" src="https://clustrmaps.com/site/1c1ir" class="w-full h-[520px] rounded-2xl"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Contact -->
+  <section id="contact" class="section flex items-center">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-sm tracking-widest text-white/60 mb-3">05 — Contact</p>
+      <div class="glass rounded-3xl p-8 grid md:grid-cols-[1fr,360px] gap-8">
+        <div>
+          <h2 class="text-4xl font-extrabold">Let’s build something great.</h2>
+          <p class="mt-3 text-white/80">Open to AI/Frontend roles, internships, and collaborations.</p>
+          <div class="mt-6 flex gap-3">
+            <a href="mailto:hebarasmy@gmail.com" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-semibold">Email me</a>
+            <a href="https://github.com/hebarasmy" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40">GitHub</a>
+            <a href="https://www.linkedin.com/in/hebarasmy" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40">LinkedIn</a>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-sm text-white/70">Vancouver, BC · hebarasmy@gmail.com</div>
+          <div class="mt-4 text-sm text-white/60">Resume: <a class="underline" href="#">Add your PDF link</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scrollspy for the side rail
+    const dots = document.querySelectorAll('[data-dot]');
+    const ids = [...dots].map(d=>d.dataset.dot);
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const id = e.target.id;
+          dots.forEach(d=>d.classList.toggle('active-dot', d.dataset.dot===id));
+        }
+      });
+    }, {threshold: .6});
+    ids.forEach(id=>io.observe(document.getElementById(id)));
+  </script>
 </body>
 </html>
