@@ -97,30 +97,23 @@
       <!-- Avatar + Robot swarm -->
       <div class="glass rounded-3xl p-6">
         <div class="avatar-stage">
-          <span class="ring" aria-hidden="true"></span>
+  <span class="ring" aria-hidden="true"></span>
 
-          <!-- 9 robots behind (mix of left/right; some mirrored in CSS) -->
-          <div class="robots">
-            <img src="images/robot-left.png"  class="small r1 a" style="--r:-6deg"  alt="" aria-hidden="true">
-            <img src="images/robot-right.png" class="small r2 b" style="--r:5deg"   alt="" aria-hidden="true">
-            <img src="images/robot-right.png" class="small r3 a" style="--r:-2deg"  alt="" aria-hidden="true">
-            <img src="images/robot-left.png"  class="small r4 b" style="--r:2deg"   alt="" aria-hidden="true">
-            <img src="images/robot-right.png" class="med   r5 a" style="--r:4deg"   alt="" aria-hidden="true">
-            <img src="images/robot-left.png"  class="med   r6 b" style="--r:-3deg"  alt="" aria-hidden="true">
-            <img src="images/robot-right.png" class="large r7 a" style="--r:1deg"   alt="" aria-hidden="true">
-            <img src="images/robot-left.png"  class="small r8 b" style="--r:-4deg"  alt="" aria-hidden="true">
-            <img src="images/robot-right.png" class="small r9 a" style="--r:3deg"   alt="" aria-hidden="true">
-          </div>
+  <div class="robots">
+    <img src="images/robot-left.png"  class="small r1 a" style="--r:-6deg"  alt="" aria-hidden="true">
+    <img src="images/robot-right.png" class="small r2 b" style="--r:5deg"   alt="" aria-hidden="true">
+    <img src="images/robot-right.png" class="small r3 a" style="--r:-2deg"  alt="" aria-hidden="true">
+    <img src="images/robot-left.png"  class="small r4 b" style="--r:2deg"   alt="" aria-hidden="true">
+    <img src="images/robot-right.png" class="med   r5 a" style="--r:4deg"   alt="" aria-hidden="true">
+    <img src="images/robot-left.png"  class="med   r6 b" style="--r:-3deg"  alt="" aria-hidden="true">
+    <img src="images/robot-right.png" class="large r7 a" style="--r:1deg"   alt="" aria-hidden="true">
+    <img src="images/robot-left.png"  class="small r8 b" style="--r:-4deg"  alt="" aria-hidden="true">
+    <img src="images/robot-right.png" class="small r9 a" style="--r:3deg"   alt="" aria-hidden="true">
+    </div>
 
-          <!-- Avatar (WebP optional) -->
-          <picture>
-            <source srcset="images/avatar.webp" type="image/webp">
-            <img src="images/avatar.png" alt="Heba Rasmy avatar" class="avatar" loading="eager">
-          </picture>
-        </div>
-
-        <div class="mt-4 text-sm text-white/70">Vancouver, BC · Open to AI/Frontend roles</div>
-      </div>
+  <!-- PNG only so it can't 404 on missing WebP -->
+    <img src="images/avatar.png?v=1" alt="Heba Rasmy avatar" class="avatar" loading="eager">
+    </div>
     </div>
   </section>
 
@@ -134,7 +127,11 @@
           <p class="mt-3 text-white/80 max-w-2xl">One page snapshot of my experience, projects, and skills. I keep it concise and up-to-date.</p>
           <div class="mt-6 flex gap-3">
             <!-- Put your PDF at /assets/Heba_Rasmy_CV.pdf -->
-            <a href="assets/Heba_Rasmy_CV.pdf" class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold" target="_blank" rel="noopener">Open PDF</a>
+            <a href="assets/CV.pdf?v=2"
+               class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold"
+               target="_blank" rel="noopener" download>
+              Open CV
+            </a>
             <a href="#experience" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40">Experience</a>
           </div>
         </div>
