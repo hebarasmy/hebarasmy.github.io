@@ -18,7 +18,7 @@
     .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12) }
     .card  { border:1px solid rgba(255,255,255,.1) }
 
-    /* ===== HERO (Avatar centered, robots waving behind via 2-frame flip) ===== */
+    /* ===== HERO (avatar centered full-rect; robots wave behind via 2-frame flip) ===== */
     .hero-visual{
       position: relative;
       width: min(560px, 80vw);
@@ -34,14 +34,14 @@
       position:absolute; inset: 8px;
       border-radius: 20px;
       overflow:hidden;
-      z-index:1; /* BEHIND the avatar */
+      z-index:1; /* behind avatar */
       filter: drop-shadow(0 10px 28px rgba(0,0,0,.35));
     }
     .robots-frame{
       position:absolute; inset:0;
       width:100%; height:100%;
-      object-fit: contain;       /* keeps full composition */
-      opacity:0;                 /* we flip between two frames */
+      object-fit: contain;
+      opacity:0;                 /* flip between two frames */
       animation: waveFlip 1.8s steps(1) infinite;
     }
     .robots-frame.left  { animation-delay: 0s; }
@@ -52,18 +52,14 @@
       50%,100% { opacity: 0; }
     }
 
-    /* Centered avatar (ring removed) */
+    /* >>> Full rectangular avatar (no circular mask) <<< */
     .avatar{
-      position:absolute;
-      z-index:2;
-      left:50%;
-      top:50%;
-      transform: translate(-50%, -50%);
-      width:68%;
-      height:68%;
-      object-fit: cover;
-      object-position: 52% 46%; /* tweak if you want face a hair higher/lower */
-      border-radius: 9999px;
+      position:absolute; z-index:2;
+      left:50%; top:50%; transform:translate(-50%, -50%);
+      max-width:90%; max-height:90%;
+      width:auto; height:auto;          /* scale to fit without cropping */
+      object-fit: contain;              /* show full image */
+      border-radius: 18px;              /* soft corners; set to 0 for square */
       box-shadow: 0 20px 60px rgba(0,0,0,.35);
     }
 
@@ -100,10 +96,9 @@
       <div>
         <p class="text-sm tracking-widest text-white/60 mb-4">01 — Home</p>
         <h1 class="text-5xl md:text-7xl font-black leading-[1.05]">Heba Rasmy</h1>
-        <p class="mt-3 text-lg text-[#c3b2ff] font-semibold">Computer Science and Artificial Intelligence graduate</p>
+        <p class="mt-3 text-lg text-[#c3b2ff] font-semibold">Hi! I'm Heba, a Computer Science and Artificial Intelligence graduate</p>
         <p class="mt-4 text-white/85 max-w-xl">
-          I build thoughtful, human-centered tools that blend clean UI with practical AI — usually with far too many sticky notes
-          and a cup of karak. I like turning messy ideas into polished, friendly products.
+          & this is a digital portfolio about me!
         </p>
         <div class="mt-7 flex flex-wrap gap-3">
           <a href="cv.html" class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 transition font-semibold">View CV</a>
@@ -118,10 +113,10 @@
           <img src="images/robots-wave-right.png" alt="" class="robots-frame right" aria-hidden="true">
         </div>
 
-        <img src="images/avatar.png?v=4" alt="Heba Rasmy avatar" class="avatar" loading="eager">
+        <img src="images/avatar.png?v=5" alt="Heba Rasmy avatar" class="avatar" loading="eager">
 
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/70">
-          Vancouver, BC · Open to AI/Frontend roles
+          
         </div>
       </div>
     </div>
@@ -134,7 +129,7 @@
       <div class="glass rounded-3xl p-8 grid md:grid-cols-[1fr,360px] gap-8 items-center">
         <div>
           <h2 class="text-4xl md:text-5xl font-extrabold">Curriculum Vitae</h2>
-          <p class="mt-3 text-white/80 max-w-2xl">One page snapshot of my experience, projects, and skills.</p>
+          <p class="mt-3 text-white/80 max-w-2xl">my resume for only some of my experiences, projects, and skills.</p>
           <div class="mt-6 flex gap-3">
             <a href="cv.html" class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold">View CV</a>
             <a href="assets/CV.pdf" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40" download>Download PDF</a>
@@ -143,9 +138,9 @@
         <div class="glass rounded-2xl p-6 text-sm text-white/70">
           <p class="font-semibold text-white">Highlights</p>
           <ul class="mt-2 space-y-1 list-disc pl-5">
-            <li>ACM Vice Chair of External Communications</li>
-            <li>RAG + multi-LLM FinBot dissertation</li>
-            <li>HaloRide AR smart-helmet interface</li>
+            <li>My IBM internship! Got to work on very insightful projects with multiple inspiring indiviuals!</li>
+            <li>My dissertation - FinBOT! Gave me the chance to discover niche topics within AI such as RAG, Bias & Hallucination!</li>
+            <li>For my Human-Computer Interaction Module, was abke to work on a a very innovative project - HaloRide, an AR smart-helmet!</li>
           </ul>
         </div>
       </div>
@@ -159,7 +154,6 @@
       <h2 class="text-4xl md:text-5xl font-extrabold">Featured Work</h2>
 
       <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <!-- HaloRide -->
         <article class="card rounded-2xl p-5 bg-white/5">
           <h3 class="text-2xl font-bold">HaloRide — AR Smart Helmet</h3>
           <p class="mt-2 text-white/80">AR HUD, hazard cues, cooling, and hands-free control via a companion web app. Built the interface with React + Tailwind and mobile-first patterns.</p>
@@ -174,7 +168,6 @@
           </div>
         </article>
 
-        <!-- FinBot -->
         <article class="card rounded-2xl p-5 bg-white/5">
           <h3 class="text-2xl font-bold">FinBot — Financial Insights (RAG)</h3>
           <p class="mt-2 text-white/80">Personalized, region-aware insights using RAG with ChromaDB and multiple LLMs; Flask backend with PyMongo, document parsing, and news ingestion.</p>
@@ -188,7 +181,6 @@
           </div>
         </article>
 
-        <!-- Hieroglyphics Converter -->
         <article class="card rounded-2xl p-5 bg-white/5">
           <h3 class="text-2xl font-bold">Hieroglyphics Converter</h3>
           <p class="mt-2 text-white/80">Converts names to Ancient Egyptian hieroglyphs; includes media library and photo gallery with a clean TypeScript/Next.js stack.</p>
@@ -201,7 +193,6 @@
           </div>
         </article>
 
-        <!-- My Safety -->
         <article class="card rounded-2xl p-5 bg-white/5">
           <h3 class="text-2xl font-bold">My Safety</h3>
           <p class="mt-2 text-white/80">Danger detection, security and safety tooling for individuals.</p>
@@ -293,8 +284,7 @@
     <div class="max-w-6xl mx-auto px-6">
       <p class="text-sm tracking-widest text-white/60 mb-3">05 — Certifications</p>
       <h2 class="text-4xl md:text-5xl font-extrabold">Certifications</h2>
-      <p class="mt-2 text-white/80">Add certificate PDFs to <code>/certs</code> and link them below.</p>
-
+      
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <a class="glass rounded-xl p-4 block hover:border-white/40" href="certs/IBM_Co_Creator.pdf" target="_blank">IBM Co-Creator badge</a>
         <a class="glass rounded-xl p-4 block hover:border-white/40" href="certs/IBM_Practitioner.pdf" target="_blank">IBM Practitioner badge</a>
@@ -306,22 +296,39 @@
     </div>
   </section>
 
-  <!-- 06 Contact -->
-  <section id="contact" class="section flex items-center">
-    <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-widest text-white/60 mb-3">06 — Contact</p>
-      <div class="glass rounded-3xl p-8 grid md:grid-cols-[1fr,360px] gap-8 items-center">
-        <div>
-          <h2 class="text-4xl md:text-5xl font-extrabold">Say hello</h2>
-          <p class="mt-3 text-white/80">Email only (privacy-first):</p>
-          <a href="mailto:heba.rsmy@gmail.com" class="mt-5 inline-block px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold">heba.rsmy@gmail.com</a>
-        </div>
-        <div class="glass rounded-2xl p-6 text-sm text-white/70">
-          <p>Thanks for visiting ✨</p>
+ <!-- 06 Contact -->
+<section id="contact" class="section flex items-center">
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <p class="text-sm tracking-widest text-white/60 mb-3">06 — Contact</p>
+    <div class="glass rounded-3xl p-8 grid md:grid-cols-[1fr,360px] gap-8 items-center">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-extrabold">Say hello</h2>
+        <p class="mt-3 text-white/80">Email or LinkedIn:</p>
+
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="mailto:heba.rsmy@gmail.com"
+             class="inline-block px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold">
+            heba.rsmy@gmail.com
+          </a>
+
+          <a href="https://www.linkedin.com/in/heba-rasmy/"
+             target="_blank" rel="noopener"
+             class="inline-flex items-center px-5 py-3 rounded-xl bg-[#0a66c2] hover:bg-[#085aab] font-semibold">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.002V9h3.112v1.561h.044c.434-.824 1.494-1.69 3.074-1.69 3.292 0 3.902 2.166 3.902 4.984v6.597zM5.337 7.433a1.804 1.804 0 11-.002-3.608 1.804 1.804 0 01.002 3.608zM6.78 20.452H3.894V9H6.78v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
         </div>
       </div>
+
+      <div class="glass rounded-2xl p-6 text-sm text-white/70">
+        <p>Thanks for visiting ✨</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <script>
     // Scrollspy for the side rail
