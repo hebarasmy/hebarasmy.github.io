@@ -52,21 +52,19 @@
       50%,100% { opacity: 0; }
     }
 
+    /* Centered avatar (ring removed) */
     .avatar{
-      position:absolute; z-index:2;
-      inset: 14%;
-      width:72%; height:72%;
+      position:absolute;
+      z-index:2;
+      left:50%;
+      top:50%;
+      transform: translate(-50%, -50%);
+      width:68%;
+      height:68%;
       object-fit: cover;
-      border-radius: 999px;
+      object-position: 52% 46%; /* tweak if you want face a hair higher/lower */
+      border-radius: 9999px;
       box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
-    .ring{
-      position:absolute; z-index:3;
-      inset:8%;
-      border-radius:999px;
-      border:3px solid rgba(180,120,255,.9);
-      box-shadow: 0 0 0 8px rgba(150,80,255,.15), 0 20px 60px rgba(0,0,0,.35) inset;
-      pointer-events:none;
     }
 
     /* Side rail */
@@ -120,8 +118,7 @@
           <img src="images/robots-wave-right.png" alt="" class="robots-frame right" aria-hidden="true">
         </div>
 
-        <img src="images/avatar.png?v=3" alt="Heba Rasmy avatar" class="avatar" loading="eager">
-        <div class="ring" aria-hidden="true"></div>
+        <img src="images/avatar.png?v=4" alt="Heba Rasmy avatar" class="avatar" loading="eager">
 
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/70">
           Vancouver, BC · Open to AI/Frontend roles
