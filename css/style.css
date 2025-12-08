@@ -73,3 +73,41 @@ body {
   max-width: 900px;
   margin: auto;
 }
+/* === EXPERIENCE TIMELINE === */
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+  padding-left: 1.75rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, rgba(139,92,246,0.7), rgba(236,72,153,0.4));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #020617;
+  border: 3px solid var(--rail);
+  box-shadow: 0 0 0 4px rgba(139,92,246,0.25);
+}
+
+.timeline-card {
+  margin-left: 3rem;
+}
