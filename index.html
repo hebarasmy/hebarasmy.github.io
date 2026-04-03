@@ -254,14 +254,16 @@
     }
 
     .project-link.code,
-    .project-link.gallery {
+    .project-link.gallery,
+    .project-link.doc {
       border: 1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.04);
       color: white;
     }
 
     .project-link.code:hover,
-    .project-link.gallery:hover {
+    .project-link.gallery:hover,
+    .project-link.doc:hover {
       border-color: rgba(255,255,255,.36);
       background: rgba(255,255,255,.08);
     }
@@ -459,7 +461,6 @@
           <div class="skill-pill">Figma</div>
           <div class="skill-pill">Kubernetes</div>
           <div class="skill-pill">OpenShift</div>
-         
         </div>
       </div>
 
@@ -736,7 +737,7 @@
           "images/finbot/8.png",
           "images/finbot/9.png"
         ],
-        liveUrl: "",
+        liveUrl: "https://finbot2025.vercel.app",
         codeUrl: "https://github.com/hebarasmy/FinBot"
       },
       {
@@ -750,8 +751,9 @@
           "images/hieroglyphics/3.png",
           "images/hieroglyphics/4.png"
         ],
-        liveUrl: "",
-        codeUrl: "https://github.com/hebarasmy/hieroglyphics-converter"
+        liveUrl: "https://hebarasmy.github.io/hieroglyphics-converter/",
+        codeUrl: "https://github.com/hebarasmy/hieroglyphics-converter",
+        docUrl: "images/hieroglyphics/1.pdf"
       },
       {
         title: "My Safety",
@@ -785,7 +787,8 @@
           "images/verticai/6.png"
         ],
         liveUrl: "",
-        codeUrl: "#"
+        codeUrl: "#",
+        docUrl: "images/verticai/1.pdf"
       },
       {
         title: "BrumBot",
@@ -872,6 +875,7 @@
               <div class="project-actions">
                 ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener" class="project-link live">Live Site</a>` : ""}
                 ${project.codeUrl ? `<a href="${project.codeUrl}" target="_blank" rel="noopener" class="project-link code">Code</a>` : ""}
+                ${project.docUrl ? `<a href="${project.docUrl}" target="_blank" rel="noopener" class="project-link doc">Document</a>` : ""}
                 ${project.extraLinks ? project.extraLinks.map(link => `
                   <a href="${link.url}" target="_blank" rel="noopener" class="project-link code">
                     ${link.label}
