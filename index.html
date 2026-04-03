@@ -85,6 +85,54 @@
       box-shadow: 0 20px 60px rgba(0,0,0,.35);
     }
 
+    .skills-cloud {
+      position: relative;
+      height: 280px;
+      margin-top: 32px;
+      max-width: 560px;
+    }
+
+    .skill-pill {
+      position: absolute;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: 0 10px 30px rgba(0,0,0,.16);
+      animation: floatSkill 5s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .skill-pill span {
+      color: #d8c7ff;
+      font-weight: 500;
+    }
+
+    .skill-pill:nth-child(1)  { top: 8%; left: 8%; animation-delay: 0s; }
+    .skill-pill:nth-child(2)  { top: 3%; right: 16%; animation-delay: .8s; }
+    .skill-pill:nth-child(3)  { top: 25%; left: 22%; animation-delay: 1.6s; }
+    .skill-pill:nth-child(4)  { top: 22%; right: 6%; animation-delay: 2.1s; }
+    .skill-pill:nth-child(5)  { top: 46%; left: 2%; animation-delay: .4s; }
+    .skill-pill:nth-child(6)  { top: 48%; left: 36%; animation-delay: 1.3s; }
+    .skill-pill:nth-child(7)  { top: 50%; right: 8%; animation-delay: 2.5s; }
+    .skill-pill:nth-child(8)  { bottom: 16%; left: 14%; animation-delay: .9s; }
+    .skill-pill:nth-child(9)  { bottom: 9%; left: 44%; animation-delay: 1.8s; }
+    .skill-pill:nth-child(10) { bottom: 14%; right: 4%; animation-delay: 2.8s; }
+
+    @keyframes floatSkill {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(-1deg);
+      }
+    }
+
     .project-card {
       overflow: hidden;
       border-radius: 24px;
@@ -166,6 +214,21 @@
       border-color: rgba(255,255,255,.25);
     }
 
+    @media (max-width: 768px) {
+      .skills-cloud {
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .skill-pill {
+        position: static;
+        animation: none;
+      }
+    }
+
     @media (min-width: 768px) {
       .side-rail {
         position: fixed;
@@ -198,7 +261,6 @@
   <nav class="side-rail hidden md:flex">
     <a href="#home" data-dot="home"></a>
     <a href="#projects" data-dot="projects"></a>
-    <a href="#cv" data-dot="cv"></a>
     <a href="#experience" data-dot="experience"></a>
     <a href="#certs" data-dot="certs"></a>
     <a href="#contact" data-dot="contact"></a>
@@ -228,9 +290,19 @@
           <a href="#projects" class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 transition font-semibold">
             View Projects
           </a>
-          <a href="cv.html" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40 transition">
-            View CV
-          </a>
+        </div>
+
+        <div class="skills-cloud">
+          <div class="skill-pill">✨ Canva</div>
+          <div class="skill-pill">⚡ Django</div>
+          <div class="skill-pill">🌸 Flask</div>
+          <div class="skill-pill">💜 React</div>
+          <div class="skill-pill">🐍 Python</div>
+          <div class="skill-pill">🧠 DSA</div>
+          <div class="skill-pill">🎨 Figma</div>
+          <div class="skill-pill">☁️ Kubernetes</div>
+          <div class="skill-pill">🛠 OpenShift</div>
+          <div class="skill-pill">📦 Containers <span>incoming</span></div>
         </div>
       </div>
 
@@ -256,7 +328,6 @@
 
       <div class="mt-12 grid md:grid-cols-2 gap-8">
 
-        <!-- HaloRide -->
         <article class="project-card group">
           <div class="project-image">
             <img src="images/haloride-preview.png" alt="HaloRide project preview">
@@ -279,7 +350,6 @@
           </div>
         </article>
 
-        <!-- FinBot -->
         <article class="project-card group">
           <div class="project-image">
             <img src="images/finbot-preview.png" alt="FinBot project preview">
@@ -302,7 +372,6 @@
           </div>
         </article>
 
-        <!-- Hieroglyphics Converter -->
         <article class="project-card group">
           <div class="project-image">
             <img src="images/hieroglyphics-preview.png" alt="Hieroglyphics Converter preview">
@@ -323,7 +392,6 @@
           </div>
         </article>
 
-        <!-- My Safety -->
         <article class="project-card group">
           <div class="project-image">
             <img src="images/mysafety-preview.png" alt="My Safety project preview">
@@ -344,7 +412,6 @@
           </div>
         </article>
 
-        <!-- Verticai -->
         <article class="project-card group">
           <div class="project-image">
             <img src="images/verticai-preview.png" alt="Verticai project preview">
@@ -366,7 +433,6 @@
           </div>
         </article>
 
-        <!-- BrumBot -->
         <article class="project-card group">
           <div class="project-image">
             <img src="images/brumbot-preview.png" alt="BrumBot project preview">
@@ -392,42 +458,10 @@
     </div>
   </section>
 
-  <!-- 03 CV -->
-  <section id="cv" class="section flex items-center">
-    <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">03 — CV</p>
-      <div class="glass rounded-3xl p-8 md:p-10 grid md:grid-cols-[1fr,360px] gap-8 items-center">
-        <div>
-          <h2 class="text-4xl md:text-5xl font-extrabold">Curriculum Vitae</h2>
-          <p class="mt-4 text-white/80 max-w-2xl leading-7">
-            A snapshot of my experience, technical skills, project work, and the environments I have grown through so far.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="cv.html" class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold">
-              View CV
-            </a>
-            <a href="assets/CV.pdf" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40" download>
-              Download PDF
-            </a>
-          </div>
-        </div>
-
-        <div class="glass rounded-2xl p-6 text-sm text-white/70">
-          <p class="font-semibold text-white text-base">Highlights</p>
-          <ul class="mt-3 space-y-3 list-disc pl-5 leading-6">
-            <li>IBM internship with exposure to design thinking, AI workflows, and product-focused problem solving.</li>
-            <li>FinBot dissertation exploring RAG, retrieval systems, bias, and hallucination in AI experiences.</li>
-            <li>HaloRide, an HCI project blending AR, product design, and a safety-first riding experience.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 Experience -->
+  <!-- 03 Experience -->
   <section id="experience" class="section py-24">
     <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">04 — Experience</p>
+      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">03 — Experience</p>
       <h2 class="text-4xl md:text-5xl font-extrabold mb-10">Experience</h2>
 
       <div class="space-y-8">
@@ -548,10 +582,10 @@
     </div>
   </section>
 
-  <!-- 05 Certifications -->
+  <!-- 04 Certifications -->
   <section id="certs" class="section py-24 flex items-center">
     <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">05 — Certifications</p>
+      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">04 — Certifications</p>
       <h2 class="text-4xl md:text-5xl font-extrabold">Certifications</h2>
 
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -598,10 +632,10 @@
     </div>
   </section>
 
-  <!-- 06 Contact -->
+  <!-- 05 Contact -->
   <section id="contact" class="section flex items-center">
     <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">06 — Contact</p>
+      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">05 — Contact</p>
       <div class="glass rounded-3xl p-8 md:p-10 grid md:grid-cols-[1fr,360px] gap-8 items-center">
         <div>
           <h2 class="text-4xl md:text-5xl font-extrabold">Say hello</h2>
