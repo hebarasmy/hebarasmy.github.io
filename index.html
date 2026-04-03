@@ -23,13 +23,13 @@
 
     .section { min-height: 100vh; scroll-margin-top: 24px; }
     .active-dot { background: var(--rail) !important; transform: scale(1.15); }
+
     .glass {
       backdrop-filter: blur(12px);
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 20px 60px rgba(0,0,0,.2);
     }
-    .card { border: 1px solid rgba(255,255,255,.1); }
 
     .hero-visual {
       position: relative;
@@ -125,12 +125,8 @@
     .skill-pill:nth-child(10) { bottom: 14%; right: 4%; animation-delay: 2.8s; }
 
     @keyframes floatSkill {
-      0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-10px) rotate(-1deg);
-      }
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(-1deg); }
     }
 
     .project-card {
@@ -148,61 +144,125 @@
       box-shadow: 0 26px 60px rgba(0,0,0,.28);
     }
 
-    .project-image {
+    .project-carousel {
       position: relative;
-      height: 260px;
+      height: 280px;
       overflow: hidden;
       background: linear-gradient(135deg, rgba(168,85,247,.2), rgba(255,255,255,.03));
     }
 
-    .project-image img {
-      width: 100%;
+    .project-slides {
+      display: flex;
       height: 100%;
-      object-fit: cover;
       transition: transform .45s ease;
     }
 
-    .project-card:hover .project-image img {
-      transform: scale(1.05);
+    .project-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
     }
 
-    .project-overlay {
+    .project-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-fade {
       position: absolute;
       inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.12));
+      pointer-events: none;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(10,10,10,.42);
+      backdrop-filter: blur(8px);
+      color: white;
+      display: grid;
+      place-items: center;
+      transition: .2s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255,255,255,.14);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .carousel-btn.prev { left: 14px; }
+    .carousel-btn.next { right: 14px; }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: linear-gradient(to top, rgba(0,0,0,.68), rgba(0,0,0,.28));
-      opacity: 0;
-      transition: opacity .3s ease;
+      gap: 8px;
+      z-index: 5;
     }
 
-    .project-card:hover .project-overlay {
-      opacity: 1;
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.35);
+      transition: .2s ease;
     }
 
-    .overlay-btn {
-      padding: 10px 16px;
+    .carousel-dot.active {
+      width: 22px;
+      background: white;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .project-link {
+      padding: 10px 14px;
       border-radius: 12px;
       font-size: 14px;
       font-weight: 600;
       transition: .2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .overlay-btn.primary {
-      background: white;
-      color: black;
-    }
-
-    .overlay-btn.secondary {
-      border: 1px solid rgba(255,255,255,.45);
+    .project-link.live {
+      background: #9333ea;
       color: white;
-      background: rgba(255,255,255,.06);
     }
 
-    .overlay-btn:hover {
-      transform: translateY(-2px);
+    .project-link.live:hover {
+      background: #a855f7;
+    }
+
+    .project-link.code,
+    .project-link.gallery {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      color: white;
+    }
+
+    .project-link.code:hover,
+    .project-link.gallery:hover {
+      border-color: rgba(255,255,255,.36);
+      background: rgba(255,255,255,.08);
     }
 
     .experience-card {
@@ -226,6 +286,10 @@
       .skill-pill {
         position: static;
         animation: none;
+      }
+
+      .project-carousel {
+        height: 240px;
       }
     }
 
@@ -257,7 +321,6 @@
 </head>
 <body class="text-white">
 
-  <!-- Side rail -->
   <nav class="side-rail hidden md:flex">
     <a href="#home" data-dot="home"></a>
     <a href="#projects" data-dot="projects"></a>
@@ -266,7 +329,6 @@
     <a href="#contact" data-dot="contact"></a>
   </nav>
 
-  <!-- Accent blobs -->
   <div class="pointer-events-none fixed inset-0 -z-10">
     <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-fuchsia-500/20 blur-3xl animate-pulse"></div>
     <div class="absolute top-1/3 -right-20 w-[24rem] h-[24rem] rounded-full bg-violet-500/15 blur-3xl animate-pulse"></div>
@@ -302,7 +364,7 @@
           <div class="skill-pill">🎨 Figma</div>
           <div class="skill-pill">☁️ Kubernetes</div>
           <div class="skill-pill">🛠 OpenShift</div>
-          
+          <div class="skill-pill">📦 Containers <span>incoming</span></div>
         </div>
       </div>
 
@@ -311,7 +373,6 @@
           <img src="images/robots-wave-left.png" alt="" class="robots-frame left" aria-hidden="true">
           <img src="images/robots-wave-right.png" alt="" class="robots-frame right" aria-hidden="true">
         </div>
-
         <img src="images/avatar.png?v=5" alt="Heba Rasmy avatar" class="avatar" loading="eager">
       </div>
     </div>
@@ -326,135 +387,7 @@
         A selection of projects focused on AI systems, interactive product design, and full-stack development.
       </p>
 
-      <div class="mt-12 grid md:grid-cols-2 gap-8">
-
-        <article class="project-card group">
-          <div class="project-image">
-            <img src="images/haloride-preview.png" alt="HaloRide project preview">
-            <div class="project-overlay">
-              <a href="https://hebarasmy.github.io/HaloRide-mobile-app/" class="overlay-btn primary">Live</a>
-              <a href="https://github.com/hebarasmy/HaloRide-mobile-app" class="overlay-btn secondary">Code</a>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold">HaloRide</h3>
-            <p class="mt-2 text-white/75 text-sm uppercase tracking-wide">AR smart helmet concept</p>
-            <p class="mt-4 text-white/80 leading-7">
-              A mobile-first companion experience for an AR smart helmet, featuring hazard cues, cooling controls, and hands-free interaction patterns.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-3 py-1 rounded-full bg-white/10">React</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">Tailwind</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">GitHub Pages</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card group">
-          <div class="project-image">
-            <img src="images/finbot-preview.png" alt="FinBot project preview">
-            <div class="project-overlay">
-              <a href="https://github.com/hebarasmy/FinBot" class="overlay-btn secondary">Code</a>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold">FinBot</h3>
-            <p class="mt-2 text-white/75 text-sm uppercase tracking-wide">Financial insights platform</p>
-            <p class="mt-4 text-white/80 leading-7">
-              A RAG-powered platform delivering personalized financial insights using document ingestion, semantic search, ChromaDB, and multiple LLM workflows.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-3 py-1 rounded-full bg-white/10">React</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">Flask</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">MongoDB</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">ChromaDB</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card group">
-          <div class="project-image">
-            <img src="images/hieroglyphics-preview.png" alt="Hieroglyphics Converter preview">
-            <div class="project-overlay">
-              <a href="https://github.com/hebarasmy/hieroglyphics-converter" class="overlay-btn secondary">Code</a>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold">Hieroglyphics Converter</h3>
-            <p class="mt-2 text-white/75 text-sm uppercase tracking-wide">Ancient Egyptian name tool</p>
-            <p class="mt-4 text-white/80 leading-7">
-              A tool that converts names into Ancient Egyptian hieroglyphics with a cleaner, more consistent output and a modern TypeScript-based interface.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-3 py-1 rounded-full bg-white/10">TypeScript</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">Next.js</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card group">
-          <div class="project-image">
-            <img src="images/mysafety-preview.png" alt="My Safety project preview">
-            <div class="project-overlay">
-              <a href="https://github.com/hebarasmy/team67dub-main" class="overlay-btn secondary">Code</a>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold">My Safety</h3>
-            <p class="mt-2 text-white/75 text-sm uppercase tracking-wide">Safety-focused digital solution</p>
-            <p class="mt-4 text-white/80 leading-7">
-              A concept focused on danger detection, security support, and personal safety features designed for everyday use cases.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-3 py-1 rounded-full bg-white/10">TypeScript</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">ML</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card group">
-          <div class="project-image">
-            <img src="images/verticai-preview.png" alt="Verticai project preview">
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn secondary">Code</a>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold">Verticai</h3>
-            <p class="mt-2 text-white/75 text-sm uppercase tracking-wide">AI product concept</p>
-            <p class="mt-4 text-white/80 leading-7">
-              A clean, product-led AI concept added to showcase a sharper design-forward project presentation within the portfolio.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-3 py-1 rounded-full bg-white/10">AI</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">Product Design</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">UI/UX</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card group">
-          <div class="project-image">
-            <img src="images/brumbot-preview.png" alt="BrumBot project preview">
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn secondary">Code</a>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold">BrumBot</h3>
-            <p class="mt-2 text-white/75 text-sm uppercase tracking-wide">Student assistant platform</p>
-            <p class="mt-4 text-white/80 leading-7">
-              An AI-powered university assistant concept focused on improving access to information and making the student experience more intuitive.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-3 py-1 rounded-full bg-white/10">AI</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">UX/UI</span>
-              <span class="px-3 py-1 rounded-full bg-white/10">Student Experience</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
+      <div id="projects-grid" class="mt-12 grid md:grid-cols-2 gap-8"></div>
     </div>
   </section>
 
@@ -465,7 +398,6 @@
       <h2 class="text-4xl md:text-5xl font-extrabold mb-10">Experience</h2>
 
       <div class="space-y-8">
-
         <div class="glass rounded-2xl p-6 experience-card">
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
@@ -541,7 +473,6 @@
             <li>Supported ad management across Google, Meta, X, and Spotify using Display&amp;Video360 and Digital Turbines.</li>
           </ul>
         </div>
-
       </div>
 
       <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -592,39 +523,30 @@
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/NVIDIA.pdf" target="_blank" rel="noopener">
           NVIDIA — Fundamentals of Deep Learning
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/Practitioneer.pdf" target="_blank" rel="noopener">
           IBM — Enterprise Design Thinking (Practitioner)
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/cocreator.pdf" target="_blank" rel="noopener">
           IBM — Enterprise Design Thinking (Co-Creator)
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/studenttraineeibm.pdf" target="_blank" rel="noopener">
           IBM iX Studio Dubai — Student Certificate
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/cybersecurity.pdf" target="_blank" rel="noopener">
           Forensic Cybersecurity Workshop
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/bham.png" target="_blank" rel="noopener">
           The Birmingham Dubai Award
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/investin.png" target="_blank" rel="noopener">
           InvestIN — Young Computer Scientist (2021)
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/amazoncampus.mp4" target="_blank" rel="noopener">
           Amazon — Campus Summer Series 2024
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="#">
           McKinsey — Forward Program
         </a>
-
         <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="#">
           Google &amp; Kaggle — 5-Day AI Agents Intensive
         </a>
@@ -667,6 +589,228 @@
   </section>
 
   <script>
+    const projects = [
+      {
+        title: "HaloRide",
+        subtitle: "AR smart helmet concept",
+        description: "A mobile-first companion experience for an AR smart helmet, featuring hazard cues, cooling controls, and hands-free interaction patterns.",
+        tech: ["React", "Tailwind", "GitHub Pages"],
+        images: [
+          "images/haloride/1.png",
+          "images/haloride/2.png",
+          "images/haloride/3.png",
+          "images/haloride/4.png",
+          "images/haloride/5.png",
+          "images/haloride/6.png",
+          "images/haloride/7.png",
+          "images/haloride/8.png",
+          "images/haloride/9.png",
+          "images/haloride/10.png",
+        ],
+        liveUrl: "https://hebarasmy.github.io/HaloRide-mobile-app/",
+        codeUrl: "https://github.com/hebarasmy/HaloRide-mobile-app",
+        extraLinks: [
+          { label: "HaloRide AR Display", url: "https://youtu.be/ojiq0Ujobcs?feature=shared" },
+          { label: "HaloRide 3D prototype", url: "https://youtu.be/kMsy7AjqfqM?si=37a-vuMiv3R_VGai" }
+        ]
+      },
+      {
+        title: "FinBot",
+        subtitle: "Financial insights platform",
+        description: "A RAG-powered platform delivering personalized financial insights using document ingestion, semantic search, ChromaDB, and multiple LLM workflows.",
+        tech: ["React", "Flask", "MongoDB", "ChromaDB"],
+        images: [
+          "images/finbot/1.png",
+          "images/finbot/2.png",
+          "images/finbot/3.png",
+          "images/finbot/4.png",
+          "images/finbot/5.png",
+          "images/finbot/6.png",
+          "images/finbot/7.png",
+          "images/finbot/8.png",
+          "images/finbot/9.png"
+        ],
+        liveUrl: "",
+        codeUrl: "https://github.com/hebarasmy/FinBot"
+      },
+      {
+        title: "Hieroglyphics Converter",
+        subtitle: "Ancient Egyptian name tool",
+        description: "A tool that converts names into Ancient Egyptian hieroglyphics with a cleaner, more consistent output and a modern TypeScript-based interface.",
+        tech: ["TypeScript", "Next.js"],
+        images: [
+          "images/hieroglyphics/1.png",
+          "images/hieroglyphics/2.png",
+          "images/hieroglyphics/3.png",
+          "images/hieroglyphics/4.png"
+        ],
+        liveUrl: "",
+        codeUrl: "https://github.com/hebarasmy/hieroglyphics-converter"
+      },
+      {
+        title: "My Safety",
+        subtitle: "Safety-focused digital solution",
+        description: "A concept focused on danger detection, security support, and personal safety features designed for everyday use cases.",
+        tech: ["TypeScript", "ML"],
+        images: [
+          "images/mysafety/1.png",
+          "images/mysafety/2.png",
+          "images/mysafety/3.png",
+          "images/mysafety/4.png",
+          "images/mysafety/5.png",
+          "images/mysafety/6.png",
+          "images/mysafety/7.png",
+          "images/mysafety/8.png"
+        ],
+        liveUrl: "",
+        codeUrl: "https://github.com/hebarasmy/team67dub-main"
+      },
+      {
+        title: "Verticai",
+        subtitle: "AI product concept",
+        description: "A clean, product-led AI concept added to showcase a sharper design-forward project presentation within the portfolio.",
+        tech: ["AI", "Product Design", "UI/UX"],
+        images: [
+          "images/verticai/1.png",
+          "images/verticai/2.png",
+          "images/verticai/3.png",
+          "images/verticai/4.png",
+          "images/verticai/5.png",
+          "images/verticai/6.png"
+        ],
+        liveUrl: "",
+        codeUrl: "#"
+      },
+      {
+        title: "BrumBot",
+        subtitle: "Student assistant platform",
+        description: "An AI-powered university assistant concept focused on improving access to information and making the student experience more intuitive.",
+        tech: ["AI", "UX/UI", "Student Experience"],
+        images: [
+          "images/brumbot/1.png",
+          "images/brumbot/2.png",
+          "images/brumbot/3.png",
+          "images/brumbot/4.png",
+          "images/brumbot/5.png",
+          "images/brumbot/6.png",
+          "images/brumbot/7.png",
+          "images/brumbot/8.png",
+          "images/brumbot/9.png",
+          "images/brumbot/10.png"
+        ],
+        liveUrl: "",
+        codeUrl: "#"
+      }
+    ];
+
+    function escapeHtml(text) {
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById("projects-grid");
+
+      grid.innerHTML = projects.map((project, projectIndex) => {
+        const slides = project.images.map((img, imageIndex) => `
+          <div class="project-slide">
+            <img src="${img}" alt="${escapeHtml(project.title)} preview ${imageIndex + 1}">
+            <div class="project-fade"></div>
+          </div>
+        `).join("");
+
+        const dots = project.images.map((_, imageIndex) => `
+          <button class="carousel-dot ${imageIndex === 0 ? "active" : ""}" data-project="${projectIndex}" data-index="${imageIndex}" aria-label="Go to slide ${imageIndex + 1}"></button>
+        `).join("");
+
+        const tech = project.tech.map(item => `
+          <span class="px-3 py-1 rounded-full bg-white/10 text-xs">${escapeHtml(item)}</span>
+        `).join("");
+
+        return `
+          <article class="project-card">
+            <div class="project-carousel">
+              <div class="project-slides" id="slides-${projectIndex}" style="transform: translateX(0%);">
+                ${slides}
+              </div>
+
+              ${project.images.length > 1 ? `
+                <button class="carousel-btn prev" onclick="moveSlide(${projectIndex}, -1)" aria-label="Previous image">
+                  &#8249;
+                </button>
+                <button class="carousel-btn next" onclick="moveSlide(${projectIndex}, 1)" aria-label="Next image">
+                  &#8250;
+                </button>
+              ` : ""}
+
+              ${project.images.length > 1 ? `
+                <div class="carousel-dots" id="dots-${projectIndex}">
+                  ${dots}
+                </div>
+              ` : ""}
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-2xl font-bold">${escapeHtml(project.title)}</h3>
+              <p class="mt-2 text-white/75 text-sm uppercase tracking-wide">${escapeHtml(project.subtitle)}</p>
+              <p class="mt-4 text-white/80 leading-7">${escapeHtml(project.description)}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                ${tech}
+              </div>
+
+             <div class="project-actions">
+              ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener" class="project-link live">Live Site</a>` : ""}
+              ${project.codeUrl ? `<a href="${project.codeUrl}" target="_blank" rel="noopener" class="project-link code">Code</a>` : ""}
+              ${project.extraLinks ? project.extraLinks.map(link => `
+                <a href="${link.url}" target="_blank" rel="noopener" class="project-link code">
+                  ${link.label}
+                </a>
+              `).join("") : ""}
+              ${project.images.length > 1 ? `<button class="project-link gallery" onclick="moveSlide(${projectIndex}, 1)">Scroll Preview</button>` : ""}
+            </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".carousel-dot").forEach(dot => {
+        dot.addEventListener("click", () => {
+          const projectIndex = Number(dot.dataset.project);
+          const slideIndex = Number(dot.dataset.index);
+          setSlide(projectIndex, slideIndex);
+        });
+      });
+    }
+
+    const currentSlides = {};
+
+    function setSlide(projectIndex, slideIndex) {
+      const total = projects[projectIndex].images.length;
+      currentSlides[projectIndex] = ((slideIndex % total) + total) % total;
+
+      const track = document.getElementById(`slides-${projectIndex}`);
+      track.style.transform = `translateX(-${currentSlides[projectIndex] * 100}%)`;
+
+      const dotsWrap = document.getElementById(`dots-${projectIndex}`);
+      if (dotsWrap) {
+        [...dotsWrap.children].forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlides[projectIndex]);
+        });
+      }
+    }
+
+    function moveSlide(projectIndex, direction) {
+      const current = currentSlides[projectIndex] || 0;
+      setSlide(projectIndex, current + direction);
+    }
+
+    renderProjects();
+
     const dots = document.querySelectorAll('[data-dot]');
     const ids = [...dots].map(d => d.dataset.dot);
 
