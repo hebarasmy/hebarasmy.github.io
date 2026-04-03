@@ -23,7 +23,12 @@
 
     .section { min-height: 100vh; scroll-margin-top: 24px; }
     .active-dot { background: var(--rail) !important; transform: scale(1.15); }
-
+    .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.16);
+    box-shadow: 0 20px 60px rgba(0,0,0,.16);
+  }
     .project-card {
     overflow: hidden;
     border-radius: 24px;
@@ -447,7 +452,7 @@
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#projects" class="px-5 py-3 rounded-xl bg-[#b084f5] hover:bg-[#c4a1ff] transition font-semibold"></a>
+          <a href="#projects" class="px-5 py-3 rounded-xl bg-[#b084f5] hover:bg-[#c4a1ff] transition font-semibold">
             View Projects
           </a>
         </div>
