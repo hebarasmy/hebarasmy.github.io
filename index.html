@@ -168,6 +168,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      cursor: zoom-in;
     }
 
     .project-fade {
@@ -274,6 +275,91 @@
       border-color: rgba(255,255,255,.25);
     }
 
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 100;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      width: min(1100px, 92vw);
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-image {
+      width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 18px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.45);
+    }
+
+    .lightbox-close,
+    .lightbox-nav {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.08);
+      color: white;
+      backdrop-filter: blur(8px);
+      transition: .2s ease;
+      z-index: 20;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-nav:hover {
+      background: rgba(255,255,255,.16);
+    }
+
+    .lightbox-close {
+      top: -10px;
+      right: -10px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .lightbox-nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      font-size: 28px;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .lightbox-prev { left: 14px; }
+    .lightbox-next { right: 14px; }
+
+    .lightbox-caption {
+      position: absolute;
+      left: 50%;
+      bottom: -52px;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.75);
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+    }
+
     @media (max-width: 768px) {
       .skills-cloud {
         height: auto;
@@ -291,6 +377,15 @@
       .project-carousel {
         height: 240px;
       }
+
+      .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+      }
+
+      .lightbox-prev { left: 6px; }
+      .lightbox-next { right: 6px; }
     }
 
     @media (min-width: 768px) {
@@ -355,16 +450,16 @@
         </div>
 
         <div class="skills-cloud">
-          <div class="skill-pill">✨ Canva</div>
-          <div class="skill-pill">⚡ Django</div>
-          <div class="skill-pill">🌸 Flask</div>
-          <div class="skill-pill">💜 React</div>
-          <div class="skill-pill">🐍 Python</div>
-          <div class="skill-pill">🧠 DSA</div>
-          <div class="skill-pill">🎨 Figma</div>
-          <div class="skill-pill">☁️ Kubernetes</div>
-          <div class="skill-pill">🛠 OpenShift</div>
-          <div class="skill-pill">📦 Containers <span>incoming</span></div>
+          <div class="skill-pill">Canva</div>
+          <div class="skill-pill">Django</div>
+          <div class="skill-pill">Flask</div>
+          <div class="skill-pill">React</div>
+          <div class="skill-pill">Python</div>
+          <div class="skill-pill">DSA</div>
+          <div class="skill-pill">Figma</div>
+          <div class="skill-pill">Kubernetes</div>
+          <div class="skill-pill">OpenShift</div>
+         
         </div>
       </div>
 
@@ -464,7 +559,7 @@
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <h3 class="text-xl font-bold">Connect Ads (Aleph) — Digital Marketing Intern</h3>
-              <p class="text-sm text-white/60 mt-1">Dubai · Performance Marketing</p>
+              <p class="text-sm text-white/60 mt-1">Dubai · Digital Marketing</p>
             </div>
             <p class="text-sm font-semibold text-white/60">Aug 2023</p>
           </div>
@@ -498,7 +593,7 @@
         <div class="glass rounded-2xl p-6">
           <h3 class="text-xl font-bold">Tech &amp; Tools</h3>
           <p class="mt-3 text-white/80 leading-7 text-sm">
-            HTML, CSS, JavaScript, TypeScript, Python, Java, SQL, React, Angular, Flask, Spring Boot, JHipster, Tailwind, Pandas, NumPy, YOLOv8, ChromaDB, PyPDF2, PyMongo, REST APIs, Agile, CI/CD, UX/UI, and prototyping.
+            HTML, CSS, TypeScript, Python, SQL, React, Angular, Flask, Spring-Boot, JHipster, Tailwind, Pandas, YOLOv8, ChromaDB, PyPDF2, PyMongo, REST APIs, Agile, CI/CD, UX/UI, and prototyping.
           </p>
         </div>
 
@@ -587,6 +682,17 @@
       </div>
     </div>
   </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close preview">&times;</button>
+      <button class="lightbox-nav lightbox-prev" onclick="changeLightboxSlide(event, -1)" aria-label="Previous image">&#8249;</button>
+      <img id="lightbox-image" class="lightbox-image" src="" alt="Expanded project preview">
+      <button class="lightbox-nav lightbox-next" onclick="changeLightboxSlide(event, 1)" aria-label="Next image">&#8250;</button>
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
 
   <script>
     const projects = [
@@ -718,7 +824,7 @@
       grid.innerHTML = projects.map((project, projectIndex) => {
         const slides = project.images.map((img, imageIndex) => `
           <div class="project-slide">
-            <img src="${img}" alt="${escapeHtml(project.title)} preview ${imageIndex + 1}">
+            <img src="${img}" alt="${escapeHtml(project.title)} preview ${imageIndex + 1}" onclick="openLightbox(${projectIndex}, ${imageIndex})">
             <div class="project-fade"></div>
           </div>
         `).join("");
@@ -763,16 +869,16 @@
                 ${tech}
               </div>
 
-             <div class="project-actions">
-              ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener" class="project-link live">Live Site</a>` : ""}
-              ${project.codeUrl ? `<a href="${project.codeUrl}" target="_blank" rel="noopener" class="project-link code">Code</a>` : ""}
-              ${project.extraLinks ? project.extraLinks.map(link => `
-                <a href="${link.url}" target="_blank" rel="noopener" class="project-link code">
-                  ${link.label}
-                </a>
-              `).join("") : ""}
-              ${project.images.length > 1 ? `<button class="project-link gallery" onclick="moveSlide(${projectIndex}, 1)">Scroll Preview</button>` : ""}
-            </div>
+              <div class="project-actions">
+                ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener" class="project-link live">Live Site</a>` : ""}
+                ${project.codeUrl ? `<a href="${project.codeUrl}" target="_blank" rel="noopener" class="project-link code">Code</a>` : ""}
+                ${project.extraLinks ? project.extraLinks.map(link => `
+                  <a href="${link.url}" target="_blank" rel="noopener" class="project-link code">
+                    ${link.label}
+                  </a>
+                `).join("") : ""}
+                ${project.images.length > 1 ? `<button class="project-link gallery" onclick="moveSlide(${projectIndex}, 1)">Scroll Preview</button>` : ""}
+              </div>
             </div>
           </article>
         `;
@@ -808,6 +914,67 @@
       const current = currentSlides[projectIndex] || 0;
       setSlide(projectIndex, current + direction);
     }
+
+    let lightboxProjectIndex = 0;
+    let lightboxImageIndex = 0;
+
+    function openLightbox(projectIndex, imageIndex) {
+      lightboxProjectIndex = projectIndex;
+      lightboxImageIndex = imageIndex;
+
+      const lightbox = document.getElementById("lightbox");
+      const image = document.getElementById("lightbox-image");
+      const caption = document.getElementById("lightbox-caption");
+
+      image.src = projects[projectIndex].images[imageIndex];
+      caption.textContent = `${projects[projectIndex].title} • ${imageIndex + 1} / ${projects[projectIndex].images.length}`;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function updateLightbox() {
+      const project = projects[lightboxProjectIndex];
+      const image = document.getElementById("lightbox-image");
+      const caption = document.getElementById("lightbox-caption");
+
+      image.src = project.images[lightboxImageIndex];
+      caption.textContent = `${project.title} • ${lightboxImageIndex + 1} / ${project.images.length}`;
+    }
+
+    function changeLightboxSlide(event, direction) {
+      event.stopPropagation();
+      const project = projects[lightboxProjectIndex];
+      lightboxImageIndex = (lightboxImageIndex + direction + project.images.length) % project.images.length;
+      updateLightbox();
+    }
+
+    function closeLightbox(event) {
+      const lightbox = document.getElementById("lightbox");
+      if (event.target === lightbox || event.currentTarget.classList.contains("lightbox-close")) {
+        lightbox.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+    }
+
+    document.addEventListener("keydown", (event) => {
+      const lightbox = document.getElementById("lightbox");
+      if (!lightbox.classList.contains("open")) return;
+
+      if (event.key === "Escape") {
+        lightbox.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      if (event.key === "ArrowLeft") {
+        lightboxImageIndex = (lightboxImageIndex - 1 + projects[lightboxProjectIndex].images.length) % projects[lightboxProjectIndex].images.length;
+        updateLightbox();
+      }
+
+      if (event.key === "ArrowRight") {
+        lightboxImageIndex = (lightboxImageIndex + 1) % projects[lightboxProjectIndex].images.length;
+        updateLightbox();
+      }
+    });
 
     renderProjects();
 
