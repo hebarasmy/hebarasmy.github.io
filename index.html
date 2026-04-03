@@ -14,21 +14,23 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(168,85,247,0.18), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(139,92,246,0.16), transparent 30%),
-        linear-gradient(135deg, #12071f 0%, #0a0612 45%, #000000 100%);
-    }
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background:
+    radial-gradient(circle at top left, rgba(196,181,253,0.35), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(221,214,254,0.28), transparent 30%),
+    linear-gradient(135deg, #2a1838 0%, #1c1229 45%, #120b1d 100%);
+}
 
     .section { min-height: 100vh; scroll-margin-top: 24px; }
     .active-dot { background: var(--rail) !important; transform: scale(1.15); }
 
-    .glass {
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    .project-card {
+    overflow: hidden;
+    border-radius: 24px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    box-shadow: 0 12px 32px rgba(0,0,0,.14);
     }
 
     .hero-visual {
@@ -245,13 +247,13 @@
     }
 
     .project-link.live {
-      background: #9333ea;
-      color: white;
-    }
+        background: #b084f5;
+        color: white;
+        }
 
-    .project-link.live:hover {
-      background: #a855f7;
-    }
+        .project-link.live:hover {
+        background: #c4a1ff;
+        }
 
     .project-link.code,
     .project-link.gallery,
@@ -437,7 +439,7 @@
       <div>
         <p class="text-sm tracking-[0.25em] text-white/50 mb-5 uppercase">01 — Home</p>
         <h1 class="text-5xl md:text-7xl font-black leading-[1.02]">Heba Rasmy</h1>
-        <p class="mt-4 text-lg md:text-xl text-[#cdbbff] font-semibold max-w-xl">
+        <p class="mt-4 text-lg md:text-xl text-[#e7d8ff] font-semibold max-w-xl">
           Computer Science &amp; Artificial Intelligence graduate.
         </p>
         <p class="mt-5 text-white/80 max-w-xl leading-7">
@@ -445,7 +447,7 @@
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#projects" class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 transition font-semibold">
+          <a href="#projects" class="px-5 py-3 rounded-xl bg-[#b084f5] hover:bg-[#c4a1ff] transition font-semibold"></a>
             View Projects
           </a>
         </div>
@@ -672,7 +674,7 @@
 
         <div class="glass rounded-2xl p-6 text-sm text-white/70 leading-7">
           <p>
-            Thanks for visiting — I appreciate you taking the time to look through my work.
+            Thanks for visiting!
           </p>
         </div>
       </div>
@@ -693,9 +695,9 @@
     const projects = [
       {
         title: "HaloRide",
-        subtitle: "AR smart helmet concept",
-        description: "A mobile-first companion experience for an AR smart helmet, featuring hazard cues, cooling controls, and hands-free interaction patterns.",
-        tech: ["React", "Tailwind", "GitHub Pages"],
+        subtitle: "AR smart helmet",
+        description: "An AR smart helmet, featuring hazard cues, cooling controls, and hands-free interaction patterns.",
+        tech: ["React", "Tailwind", "Rhino 3D", "Unity", "Figma", "Canva"],
         images: [
           "images/haloride/1.png",
           "images/haloride/2.png",
@@ -719,8 +721,8 @@
       {
         title: "FinBot",
         subtitle: "Financial insights platform",
-        description: "A RAG-powered platform delivering personalized financial insights using document ingestion, semantic search, ChromaDB, and multiple LLM workflows.",
-        tech: ["React", "Flask", "MongoDB", "ChromaDB"],
+        description: "A RAG-powered platform delivering personalized financial insights using document ingestion, semantic search, ChromaDB, RAG and multiple LLM workflows.",
+        tech: ["React", "Figma","RaG", "Multi-model LLM", "Next.js", "Flask", "MongoDB", "ChromaDB"],
         images: [
           "images/finbot/1.png",
           "images/finbot/2.png",
@@ -737,9 +739,9 @@
       },
       {
         title: "Hieroglyphics Converter",
-        subtitle: "Ancient Egyptian name tool",
-        description: "A tool that converts names into Ancient Egyptian hieroglyphics with a cleaner, more consistent output and a modern TypeScript-based interface.",
-        tech: ["TypeScript", "Next.js"],
+        subtitle: "Ancient Hieroglyphics name tool Converter",
+        description: "A tool that converts names into Ancient Egyptian hieroglyphics with a smoother, more consistent output, additionally providing the beautiful Ancient Egyptian history.",
+        tech: ["TypeScript", "Next.js", "RAG"],
         images: [
           "images/hieroglyphics/1.png",
           "images/hieroglyphics/2.png",
@@ -753,8 +755,8 @@
       {
         title: "My Safety",
         subtitle: "Safety-focused digital solution",
-        description: "A concept focused on danger detection, security support, and personal safety features designed for everyday use cases.",
-        tech: ["TypeScript", "ML"],
+        description: "A safety-focused digital solution focused on danger detection, security support, and personalized safety features designed for everyday use cases.",
+        tech: ["JHipster", "Angular", "Spring Boot"],
         images: [
           "images/mysafety/1.png",
           "images/mysafety/2.png",
@@ -771,8 +773,8 @@
       {
         title: "Verticai",
         subtitle: "AI product concept",
-        description: "A clean, product-led AI concept added to showcase a sharper design-forward project presentation within the portfolio.",
-        tech: ["AI", "Product Design", "UI/UX"],
+        description: "Advanced AI-powered Vertical Farming solution with modern argicutural practices that convey innovation and sustainability .",
+        tech: ["AI", "Figma","Software Engineering & Professional Practices"],
         images: [
           "images/verticai/1.png",
           "images/verticai/2.png",
@@ -786,8 +788,8 @@
       {
         title: "BrumBot",
         subtitle: "Student assistant platform",
-        description: "An AI-powered university assistant concept focused on improving access to information and making the student experience more intuitive.",
-        tech: ["AI", "UX/UI", "Student Experience"],
+        description: "Brumbot is an intelligent university platform assistant focused on improving access to information and making the student experience more centralized & intuitive.",
+        tech: ["AI", "Figma","Canva", "UX/UI"],
         images: [
           "images/brumbot/1.png",
           "images/brumbot/2.png",
