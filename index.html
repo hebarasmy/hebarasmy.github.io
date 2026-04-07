@@ -120,21 +120,98 @@
       font-weight: 500;
     }
 
-    .skill-pill:nth-child(1)  { top: 8%; left: 8%; animation-delay: 0s; }
-    .skill-pill:nth-child(2)  { top: 3%; right: 16%; animation-delay: .8s; }
-    .skill-pill:nth-child(3)  { top: 25%; left: 22%; animation-delay: 1.6s; }
-    .skill-pill:nth-child(4)  { top: 22%; right: 6%; animation-delay: 2.1s; }
-    .skill-pill:nth-child(5)  { top: 46%; left: 2%; animation-delay: .4s; }
-    .skill-pill:nth-child(6)  { top: 48%; left: 36%; animation-delay: 1.3s; }
-    .skill-pill:nth-child(7)  { top: 50%; right: 8%; animation-delay: 2.5s; }
-    .skill-pill:nth-child(8)  { bottom: 16%; left: 14%; animation-delay: .9s; }
-    .skill-pill:nth-child(9)  { bottom: 9%; left: 44%; animation-delay: 1.8s; }
-    .skill-pill:nth-child(10) { bottom: 14%; right: 4%; animation-delay: 2.8s; }
+    .skill-pill:nth-child(1)  { top: 8%; left: 8%; }
+    .skill-pill:nth-child(2)  { top: 3%; right: 16%; }
+    .skill-pill:nth-child(3)  { top: 25%; left: 22%; }
+    .skill-pill:nth-child(4)  { top: 22%; right: 6%; }
+    .skill-pill:nth-child(5)  { top: 46%; left: 2%; }
+    .skill-pill:nth-child(6)  { top: 48%; left: 36%; }
+    .skill-pill:nth-child(7)  { top: 50%; right: 8%; }
+    .skill-pill:nth-child(8)  { bottom: 16%; left: 14%; }
+    .skill-pill:nth-child(9)  { bottom: 9%; left: 44%; }
+    .skill-pill:nth-child(10) { bottom: 14%; right: 4%; }
 
     @keyframes floatSkill {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-10px) rotate(-1deg); }
     }
+
+    /* === ENTRANCE ANIMATIONS === */
+    @keyframes floatInFromBottom {
+      0% {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatInFromLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-80px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes floatInFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(80px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    /* Apply entrance animations to hero elements */
+    .hero-text-content {
+      animation: floatInFromLeft 1s ease-out forwards;
+    }
+
+    .hero-visual {
+      animation: floatInFromRight 1s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero-visual .avatar {
+      animation: scaleIn 0.8s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    /* Skill pills entrance + continuous float */
+    .skill-pill {
+      opacity: 0;
+      animation: floatInFromBottom 0.6s ease-out forwards, floatSkill 5s ease-in-out infinite;
+    }
+
+    .skill-pill:nth-child(1)  { animation-delay: 0.8s, 1.4s; }
+    .skill-pill:nth-child(2)  { animation-delay: 0.9s, 2.2s; }
+    .skill-pill:nth-child(3)  { animation-delay: 1.0s, 2.6s; }
+    .skill-pill:nth-child(4)  { animation-delay: 1.1s, 3.1s; }
+    .skill-pill:nth-child(5)  { animation-delay: 1.2s, 1.6s; }
+    .skill-pill:nth-child(6)  { animation-delay: 1.3s, 2.5s; }
+    .skill-pill:nth-child(7)  { animation-delay: 1.4s, 3.6s; }
+    .skill-pill:nth-child(8)  { animation-delay: 1.5s, 2.0s; }
+    .skill-pill:nth-child(9)  { animation-delay: 1.6s, 2.9s; }
+    .skill-pill:nth-child(10) { animation-delay: 1.7s, 3.9s; }
 
     .project-card {
       overflow: hidden;
@@ -397,6 +474,67 @@
       .lightbox-next { right: 6px; }
     }
 
+    /* === SCROLL ANIMATIONS === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .fade-in-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .fade-in-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .fade-in-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     @media (min-width: 768px) {
       .side-rail {
         position: fixed;
@@ -421,9 +559,229 @@
         background: rgba(255,255,255,.6);
       }
     }
+
+    /* === HEADER === */
+    .header {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      background: rgba(230, 220, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      animation: slideDown 0.5s ease-out;
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-120%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .header-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .header-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #2d1b4e;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .header-nav {
+      display: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .header-nav a {
+      padding: 0.5rem 1rem;
+      color: #2d1b4e;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .header-nav a:hover {
+      background: rgba(139, 92, 246, 0.15);
+    }
+
+    .header-nav a.contact-btn {
+      background: rgba(139, 92, 246, 0.2);
+      color: #6d28d9;
+    }
+
+    .header-nav a.contact-btn:hover {
+      background: rgba(139, 92, 246, 0.3);
+    }
+
+    @media (min-width: 768px) {
+      .header-nav {
+        display: flex;
+      }
+    }
+
+    .menu-toggle {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.5);
+    }
+
+    .menu-toggle span {
+      width: 20px;
+      height: 2px;
+      background: #2d1b4e;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 6.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(230, 220, 255, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+      z-index: 40;
+    }
+
+    .mobile-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .mobile-menu a {
+      padding: 0.875rem;
+      color: #2d1b4e;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(139, 92, 246, 0.15);
+    }
+
+    .mobile-menu a.contact-btn {
+      background: rgba(139, 92, 246, 0.2);
+      color: #6d28d9;
+    }
+
+    .mobile-menu a.contact-btn:hover {
+      background: rgba(139, 92, 246, 0.3);
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu {
+        display: none;
+      }
+    }
+
+    /* Add padding to body to account for floating header */
+    body {
+      padding-top: 6rem;
+    }
   </style>
 </head>
 <body class="text-white">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="#home" class="header-logo">H.R</a>
+      <nav class="header-nav">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="contact-btn">Contact Me</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="#home" class="menu-link">Home</a>
+      <a href="#projects" class="menu-link">Projects</a>
+      <a href="#experience" class="menu-link">Experience</a>
+      <a href="#contact" class="menu-link contact-btn">Contact Me</a>
+    </nav>
+  </div>
 
   <nav class="side-rail hidden md:flex">
     <a href="#home" data-dot="home"></a>
@@ -441,7 +799,7 @@
 
   <section id="home" class="section flex items-center">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 items-center gap-12">
-      <div>
+      <div class="hero-text-content">
         <p class="text-sm tracking-[0.25em] text-white/50 mb-5 uppercase">01 — Home</p>
         <h1 class="text-5xl md:text-7xl font-black leading-[1.02]">Heba Rasmy</h1>
         <p class="mt-4 text-lg md:text-xl text-[#e7d8ff] font-semibold max-w-xl">
@@ -494,11 +852,11 @@
 
   <section id="experience" class="section py-24">
     <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">03 — Experience</p>
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-10">Experience</h2>
+      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase fade-in">03 — Experience</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-10 fade-in fade-in-delay-1">Experience</h2>
 
       <div class="space-y-8">
-        <div class="glass rounded-2xl p-6 experience-card">
+        <div class="glass rounded-2xl p-6 experience-card fade-in">
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <h3 class="text-xl font-bold">BloomingBox — Computer Vision Engineer Intern</h3>
@@ -514,7 +872,7 @@
           </ul>
         </div>
 
-        <div class="glass rounded-2xl p-6 experience-card">
+        <div class="glass rounded-2xl p-6 experience-card fade-in fade-in-delay-1">
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <h3 class="text-xl font-bold">ACM — Vice Chair of External Communications</h3>
@@ -529,7 +887,7 @@
           </ul>
         </div>
 
-        <div class="glass rounded-2xl p-6 experience-card">
+        <div class="glass rounded-2xl p-6 experience-card fade-in fade-in-delay-2">
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <h3 class="text-xl font-bold">IBM — Student Trainee</h3>
@@ -545,7 +903,7 @@
           </ul>
         </div>
 
-        <div class="glass rounded-2xl p-6 experience-card">
+        <div class="glass rounded-2xl p-6 experience-card fade-in fade-in-delay-3">
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <h3 class="text-xl font-bold">KLIK — Software Developer Intern &amp; Student Ambassador</h3>
@@ -560,7 +918,7 @@
           </ul>
         </div>
 
-        <div class="glass rounded-2xl p-6 experience-card">
+        <div class="glass rounded-2xl p-6 experience-card fade-in fade-in-delay-4">
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <h3 class="text-xl font-bold">Connect Ads (Aleph) — Digital Marketing Intern</h3>
@@ -576,7 +934,7 @@
       </div>
 
       <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 fade-in">
           <h3 class="text-xl font-bold">Interests</h3>
           <ul class="mt-3 space-y-2 text-white/80 leading-6">
             <li>Padel &amp; squash</li>
@@ -586,7 +944,7 @@
           </ul>
         </div>
 
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 fade-in fade-in-delay-1">
           <h3 class="text-xl font-bold">Languages</h3>
           <ul class="mt-3 space-y-2 text-white/85 list-disc pl-5">
             <li>Arabic</li>
@@ -595,14 +953,14 @@
           </ul>
         </div>
 
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 fade-in fade-in-delay-2">
           <h3 class="text-xl font-bold">Tech &amp; Tools</h3>
           <p class="mt-3 text-white/80 leading-7 text-sm">
             HTML, CSS, TypeScript, Python, SQL, React, Angular, Flask, Spring-Boot, JHipster, Tailwind, Pandas, YOLOv8, ChromaDB, PyPDF2, PyMongo, REST APIs, Agile, CI/CD, UX/UI, and prototyping.
           </p>
         </div>
 
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 fade-in fade-in-delay-3">
           <h3 class="text-xl font-bold">Education</h3>
           <ul class="mt-3 space-y-3 text-white/85 leading-6">
             <li><strong>University of Birmingham</strong><br>BSc Computer Science &amp; Artificial Intelligence</li>
@@ -615,38 +973,38 @@
 
   <section id="certs" class="section py-24 flex items-center">
     <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">04 — Certifications</p>
-      <h2 class="text-4xl md:text-5xl font-extrabold">Certifications</h2>
+      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase fade-in">04 — Certifications</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold fade-in fade-in-delay-1">Certifications</h2>
 
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/NVIDIA.pdf" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in" href="/assets/certifications/NVIDIA.pdf" target="_blank" rel="noopener">
           NVIDIA — Fundamentals of Deep Learning
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/Practitioneer.pdf" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-1" href="/assets/certifications/Practitioneer.pdf" target="_blank" rel="noopener">
           IBM — Enterprise Design Thinking (Practitioner)
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/cocreator.pdf" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-2" href="/assets/certifications/cocreator.pdf" target="_blank" rel="noopener">
           IBM — Enterprise Design Thinking (Co-Creator)
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/studenttraineeibm.pdf" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-3" href="/assets/certifications/studenttraineeibm.pdf" target="_blank" rel="noopener">
           IBM iX Studio Dubai — Student Certificate
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/cybersecurity.pdf" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-4" href="/assets/certifications/cybersecurity.pdf" target="_blank" rel="noopener">
           Forensic Cybersecurity Workshop
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/bham.png" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in" href="/assets/certifications/bham.png" target="_blank" rel="noopener">
           The Birmingham Dubai Award
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/investin.png" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-1" href="/assets/certifications/investin.png" target="_blank" rel="noopener">
           InvestIN — Young Computer Scientist (2021)
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="/assets/certifications/amazoncampus.mp4" target="_blank" rel="noopener">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-2" href="/assets/certifications/amazoncampus.mp4" target="_blank" rel="noopener">
           Amazon — Campus Summer Series 2024
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="#">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-3" href="#">
           McKinsey — Forward Program
         </a>
-        <a class="glass rounded-xl p-4 block hover:border-white/40 transition" href="#">
+        <a class="glass rounded-xl p-4 block hover:border-white/40 transition fade-in fade-in-delay-4" href="#">
           Google &amp; Kaggle — 5-Day AI Agents Intensive
         </a>
       </div>
@@ -655,8 +1013,8 @@
 
   <section id="contact" class="section flex items-center">
     <div class="max-w-6xl mx-auto px-6 w-full">
-      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase">05 — Contact</p>
-      <div class="glass rounded-3xl p-8 md:p-10 grid md:grid-cols-[1fr,360px] gap-8 items-center">
+      <p class="text-sm tracking-[0.25em] text-white/50 mb-3 uppercase fade-in">05 — Contact</p>
+      <div class="glass rounded-3xl p-8 md:p-10 grid md:grid-cols-[1fr,360px] gap-8 items-center scale-in">
         <div>
           <h2 class="text-4xl md:text-5xl font-extrabold">Say hello</h2>
           <p class="mt-3 text-white/80 leading-7">
@@ -823,6 +1181,7 @@
       const grid = document.getElementById("projects-grid");
 
       grid.innerHTML = projects.map((project, projectIndex) => {
+        const delayClass = projectIndex % 2 === 0 ? '' : 'fade-in-delay-1';
         const slides = project.images.map((img, imageIndex) => `
           <div class="project-slide">
             <img src="${img}" alt="${escapeHtml(project.title)} preview ${imageIndex + 1}" onclick="openLightbox(${projectIndex}, ${imageIndex})">
@@ -839,7 +1198,7 @@
         `).join("");
 
         return `
-          <article class="project-card">
+          <article class="project-card fade-in ${delayClass}">
             <div class="project-carousel">
               <div class="project-slides" id="slides-${projectIndex}" style="transform: translateX(0%);">
                 ${slides}
@@ -939,23 +1298,99 @@
       const caption = document.getElementById("lightbox-caption");
 
       image.src = project.images[lightboxImageIndex];
-      caption.textContent = `${project.title} • ${lightboxImageIndex + 1} / ${project.images.length}`;
+    }
+
+    function closeLightbox(event) {
+      if (event.target.id === "lightbox" || event.target.classList.contains("lightbox-close")) {
+        document.getElementById("lightbox").classList.remove("open");
+        document.body.style.overflow = "";
+      }
     }
 
     function changeLightboxSlide(event, direction) {
       event.stopPropagation();
       const project = projects[lightboxProjectIndex];
-      lightboxImageIndex = (lightboxImageIndex + direction + project.images.length) % project.images.length;
+      lightboxImageIndex = ((lightboxImageIndex + direction) % project.images.length + project.images.length) % project.images.length;
       updateLightbox();
     }
 
-    function closeLightbox(event) {
-      const lightbox = document.getElementById("lightbox");
-      if (event.target === lightbox || event.currentTarget.classList.contains("lightbox-close")) {
-        lightbox.classList.remove("open");
-        document.body.style.overflow = "";
-      }
+    // === SCROLL ANIMATIONS ===
+    function initScrollAnimations() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animation classes
+      document.querySelectorAll(".fade-in, .slide-in-left, .slide-in-right, .scale-in").forEach(el => {
+        observer.observe(el);
+      });
     }
+
+    // Side rail active dot tracking
+    function updateActiveDot() {
+      const sections = document.querySelectorAll(".section");
+      const dots = document.querySelectorAll(".side-rail a");
+
+      let currentSection = "";
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom >= 150) {
+          currentSection = section.id;
+        }
+      });
+
+      dots.forEach(dot => {
+        const href = dot.getAttribute("href");
+        if (href === `#${currentSection}`) {
+          dot.classList.add("active-dot");
+        } else {
+          dot.classList.remove("active-dot");
+        }
+      });
+    }
+
+    // Menu toggle functionality
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuLinks = document.querySelectorAll(".menu-link");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+    });
+
+    // Close menu when clicking a link
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        mobileMenu.classList.remove("active");
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+        menuToggle.classList.remove("active");
+        mobileMenu.classList.remove("active");
+      }
+    });
+
+    // Initialize everything
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProjects();
+      initScrollAnimations();
+      window.addEventListener("scroll", updateActiveDot);
+      updateActiveDot();
+    });
 
     document.addEventListener("keydown", (event) => {
       const lightbox = document.getElementById("lightbox");
@@ -976,8 +1411,6 @@
         updateLightbox();
       }
     });
-
-    renderProjects();
 
     const dots = document.querySelectorAll('[data-dot]');
     const ids = [...dots].map(d => d.dataset.dot);
